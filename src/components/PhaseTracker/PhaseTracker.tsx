@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { PHASES } from '../../data/phases'
 import styles from './PhaseTracker.module.css'
 
