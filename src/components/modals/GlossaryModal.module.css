@@ -1,0 +1,30 @@
+.glSearch {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--parch-lt);
+  border: 1.5px solid var(--gold-line);
+  border-radius: 5px;
+  padding: 11px 14px;
+  margin-bottom: 18px;
+}
+.glGroup { margin-bottom: 20px; }
+.glGroup h3 {
+  font-family: var(--font-disp);
+  font-size: 13px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  border-bottom: 1px solid var(--gold-dim);
+  padding-bottom: 6px;
+  margin: 0 0 12px;
+}
+.glList { display: grid; grid-template-columns: 1fr 1fr; gap: 11px 22px; }
+.glItem b { font-family: var(--font-disp); font-size: 14.5px; color: var(--ink); display: block; margin-bottom: 1px; }
+.glItem span { font-size: 14px; line-height: 1.45; color: var(--ink-soft); }
+.glEmpty { font-style: italic; color: var(--ink-soft); }
+
+@media (max-width: 900px) {
+  .glList { grid-template-columns: 1fr; }
+}

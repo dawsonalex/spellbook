@@ -1,0 +1,96 @@
+.anatomyWrap { display: flex; gap: 34px; align-items: flex-start; justify-content: center; }
+
+.mtgCard {
+  position: relative;
+  width: 330px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  padding: 13px;
+  background: linear-gradient(160deg, #3a2c12, #1c1408);
+  box-shadow: 0 16px 36px rgba(0,0,0,.4);
+  color: #1c1408;
+}
+.mcInner { border-radius: 7px; overflow: hidden; background: #cdbb92; box-shadow: inset 0 0 0 2px rgba(0,0,0,.3); }
+
+.mcTitlebar,
+.mcTypebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 11px;
+  background: linear-gradient(180deg, #e9dcb8, #cdbb92);
+  border-bottom: 1px solid rgba(0,0,0,.25);
+}
+.mcName { font-family: var(--font-disp); font-weight: 700; font-size: 15px; color: #241a08; }
+.mcCost { display: flex; gap: 3px; }
+
+.mcArt {
+  height: 150px;
+  background: repeating-linear-gradient(135deg, #8f7f57 0 9px, #82724c 9px 18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mcArt span { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: .08em; color: rgba(255,255,255,.62); text-transform: uppercase; }
+
+.mcTypebar { font-family: var(--font-disp); font-weight: 600; font-size: 13px; color: #241a08; }
+.mcSet { width: 18px; height: 18px; border-radius: 3px; background: #241a08; color: #e9dcb8; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+
+.mcText { background: #e7dcc1; padding: 12px 13px; min-height: 120px; font-size: 13.5px; line-height: 1.5; color: #1c1408; }
+.mcText .kw { font-weight: 600; }
+.mcFlavor { font-style: italic; color: #5a4a30; border-top: 1px solid rgba(0,0,0,.18); margin-top: 9px; padding-top: 9px; font-size: 12.5px; }
+
+.mcBottom { display: flex; align-items: center; justify-content: space-between; padding: 7px 11px 2px; }
+.mcInfo { font-size: 10px; font-family: 'Courier New', monospace; color: rgba(233,220,184,.75); }
+.mcPt {
+  background: linear-gradient(180deg, #e9dcb8, #cdbb92);
+  border: 1px solid rgba(0,0,0,.35);
+  border-radius: 6px;
+  padding: 3px 13px;
+  font-family: var(--font-disp);
+  font-weight: 700;
+  font-size: 16px;
+  color: #241a08;
+}
+
+.mcPin {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
+  border: 2px solid #fff7de;
+  font-family: var(--font-disp);
+  font-weight: 700;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  box-shadow: 0 2px 5px rgba(0,0,0,.4);
+}
+
+.callouts { flex: 1; max-width: 360px; display: flex; flex-direction: column; gap: 11px; }
+.callout { display: flex; gap: 12px; align-items: flex-start; }
+.cnum {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--gold);
+  color: #fff;
+  font-family: var(--font-disp);
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ctxt b { font-family: var(--font-disp); font-size: 14px; letter-spacing: .03em; color: var(--gold-dark); display: block; margin-bottom: 1px; }
+.ctxt span { font-size: 13.5px; line-height: 1.45; color: var(--ink); }
+
+@media (max-width: 900px) {
+  .anatomyWrap { flex-direction: column; align-items: center; }
+}

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+:root {
+  --parch: #e9dcb8;
+  --parch-lt: #f7f1de;
+  --parch-card: #fbf6e6;
+  --ink: #3a2c12;
+  --ink-soft: #6b552c;
+  --gold: #9a7b3f;
+  --gold-line: #b8a263;
+  --gold-dim: #cbb978;
+  --gold-dark: #5b4318;
+  --shadow: rgba(120, 90, 40, 0.22);
+
+  /* mana colours */
+  --w: #f0e4c2;
+  --u: #2c6fa8;
+  --b: #3a3340;
+  --r: #c53a28;
+  --g: #2e8b52;
+  --c: #c9c2b0;
+
+  --danger: #b3331f;
+
+  --font-disp: 'Cinzel', serif;
+  --font-body: 'EB Garamond', serif;
+}
