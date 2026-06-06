@@ -90,7 +90,7 @@ export function resolveCombat(a: AttackerInput, blockers: BlockerInput[]): Comba
     attackerDies: !aAlive,
     blockers: bs.map((b) => ({ dies: !b.alive })),
     deadCount: bs.filter((b) => !b.alive).length,
-    trample: tramp,
+    trample: aAlive ? tramp : 0,
     anyFS,
     fs,
   }

@@ -47,6 +47,16 @@ src/
 
 Each component that has unique styles keeps them in a co-located `.module.css` file.
 
+## Running tests
+
+Unit tests use [Vitest](https://vitest.dev/) and run inside Docker:
+
+```bash
+docker compose run --rm test
+```
+
+The first run installs dependencies into the shared `node_modules` volume before executing the suite. Subsequent runs skip straight to the tests.
+
 ## Other commands
 
 Run these via `docker compose run --rm app <command>`:

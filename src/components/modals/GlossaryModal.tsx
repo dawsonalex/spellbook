@@ -23,6 +23,7 @@ export default function GlossaryModal({ onClose }: GlossaryModalProps) {
       title="Glossary"
       subtitle="Keywords & core concepts, in plain language."
       maxWidth={840}
+      minHeight={'92vh'}
       onClose={onClose}
     >
       <input

@@ -9,5 +9,14 @@ services:
     environment:
       - NODE_ENV=development
 
+  test:
+    build: .
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    environment:
+      - NODE_ENV=test
+    command: sh -c "npm install && npm run test"
+
 volumes:
   node_modules:
