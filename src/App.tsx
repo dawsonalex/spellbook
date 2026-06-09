@@ -1,7 +1,10 @@
-import type { ManaColor, DamageMap, ModalKey } from './types'
+import type { ManaColor, DamageMap, ModalKey, SheetKey } from './types'
 import { PHASES } from './data/phases'
 import { useGameState, makePlayers } from './hooks/useGameState'
 import PlayerPanel from './components/PlayerPanel/PlayerPanel'
+import PlayerChip from './components/PlayerPanel/PlayerChip'
+import PlayerSheet from './components/mobile/PlayerSheet'
+import ToolsSheet from './components/mobile/ToolsSheet'
 import PhaseTracker from './components/PhaseTracker/PhaseTracker'
 import CombatModal from './components/combat/CombatModal'
 import CardAnatomyModal from './components/modals/CardAnatomyModal'
@@ -14,6 +17,7 @@ import { useState } from 'react'
 export default function App() {
   const [state, setState] = useGameState()
   const [modal, setModal] = useState<ModalKey>(null)
+  const [sheet, setSheet] = useState<SheetKey>(null)
   const { players, activeIdx, phaseIdx, startLife } = state
 
   const patch = (p: Partial<typeof state>) => setState((s) => ({ ...s, ...p }))
@@ -106,6 +110,11 @@ export default function App() {
     />
   )
 
+  const playerSheetPlayer =
+    sheet !== null && sheet !== 'tools'
+      ? (players.find((p) => p.id === sheet.id) ?? null)
+      : null
+
   return (
     <div id="app">
       <div className="app-head">
@@ -119,6 +128,32 @@ export default function App() {
           <button className="tool" onClick={() => setModal('dice')}>Dice</button>
           <button className="tool" onClick={() => setModal('random')}>Who goes first</button>
           <button className="tool" onClick={() => setModal('newgame')}>New game</button>
+        </div>
+        <button
+          className="m-burger"
+          onClick={() => setSheet('tools')}
+          aria-label="Open tools menu"
+        >
+          <i /><i /><i />
+        </button>
+      </div>
+
+      {/* Mobile-only player chip strip */}
+      <div className="m-chips-wrap">
+        <div className="m-chips-h">
+          <span className="m-chips-lbl">Players</span>
+          <span className="m-chips-hint">tap to adjust life ›</span>
+        </div>
+        <div className="m-chips">
+          {players.map((p) => (
+            <PlayerChip
+              key={p.id}
+              player={p}
+              isActive={players[activeIdx]!.id === p.id}
+              isDead={isDead(p)}
+              onClick={() => setSheet({ type: 'player', id: p.id })}
+            />
+          ))}
         </div>
       </div>
 
@@ -160,6 +195,24 @@ export default function App() {
           initial={{ players, startLife }}
           onStart={startGame}
           onClose={() => setModal(null)}
+        />
+      )}
+
+      {sheet === 'tools' && (
+        <ToolsSheet
+          onOpen={setModal}
+          onClose={() => setSheet(null)}
+        />
+      )}
+      {playerSheetPlayer && (
+        <PlayerSheet
+          player={playerSheetPlayer}
+          isActive={players[activeIdx]!.id === playerSheetPlayer.id}
+          others={others(playerSheetPlayer.id)}
+          onLife={(d) => adjustLife(playerSheetPlayer.id, d)}
+          onCmdr={(srcId, d) => adjustCmdr(playerSheetPlayer.id, srcId, d)}
+          onRevive={() => revive(playerSheetPlayer.id)}
+          onClose={() => setSheet(null)}
         />
       )}
     </div>

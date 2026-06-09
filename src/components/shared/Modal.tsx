@@ -14,6 +14,7 @@ export default function Modal({ title, subtitle, maxWidth = 900, minHeight = 0, 
         maxWidth: maxWidth,
         minHeight: typeof minHeight === 'number' ? `${minHeight}px` : minHeight
       }} onClick={(e) => e.stopPropagation()}>
+        <div className="sheet-grab" />
         <div className="modal-head">
           <div>
             <h2>{title}</h2>

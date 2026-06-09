@@ -269,3 +269,67 @@
   .combatGrid { grid-template-columns: 1fr; }
   .cr { border-left: none; border-top: 1px dashed var(--gold-dim); padding-left: 0; padding-top: 18px; margin-top: 4px; }
 }
+
+@media (max-width: 680px) {
+  /* Fullscreen combat takeover — override global bottom-sheet styles */
+  .combatScrim {
+    align-items: stretch !important;
+    padding: 0 !important;
+  }
+  .combatScrim :global(.modal) {
+    border-radius: 0 !important;
+    border-bottom: 2px solid var(--gold) !important;
+    max-width: none !important;
+    max-height: none !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  /* Hide the sheet grab handle on combat (it's not a sheet) */
+  .combatScrim :global(.sheet-grab) { display: none !important; }
+
+  /* Step list → horizontal scrolling pill strip */
+  .cwBar, .cwCollapse, .cwReopen { display: none; }
+  .cwSteps {
+    flex-direction: row;
+    gap: 7px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+    scrollbar-width: none;
+  }
+  .cwSteps::-webkit-scrollbar { display: none; }
+  .cwStep { flex-shrink: 0; }
+  .cwStep button {
+    border-radius: 22px;
+    white-space: nowrap;
+    padding: 7px 13px 7px 8px;
+    width: auto;
+  }
+  .cwStepname em { display: none; }
+  .cwNum { width: 22px; height: 22px; font-size: 12px; flex-shrink: 0; }
+
+  /* Single-column layout */
+  .combatGrid { grid-template-columns: 1fr; gap: 0; }
+  .cw { overflow: visible; }
+  .cr {
+    border-left: none;
+    border-top: 1px dashed var(--gold-dim);
+    padding-left: 0;
+    padding-top: 18px;
+    margin-top: 4px;
+  }
+
+  /* fight columns stack vertically */
+  .fightCols { grid-template-columns: 1fr; }
+  .atkcol { border-right: none; border-bottom: 1px dashed var(--gold-dim); }
+
+  /* Sticky apply button at bottom of scroll */
+  .crApply {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    padding: 16px;
+    box-shadow: 0 -24px 24px 8px rgba(236,224,191,.97);
+    margin-top: 8px;
+  }
+}

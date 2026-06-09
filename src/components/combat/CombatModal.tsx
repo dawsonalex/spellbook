@@ -46,6 +46,7 @@ export default function CombatModal({ players, activeIdx, onApply, onClose }: Co
   const [step, setStep] = useState(0)
   const [showSteps, setShowSteps] = useState(true)
   const bidRef = useRef(0)
+  const stepItemRefs = useRef<(HTMLLIElement | null)[]>([])
 
   const active = players[activeIdx]!
   const opponents = players.filter(
@@ -142,7 +143,7 @@ export default function CombatModal({ players, activeIdx, onApply, onClose }: Co
   const bodyClass = `modal-body ${styles.combatGrid}${showSteps ? '' : ' ' + styles.solo}`
 
   return (
-    <div className="scrim" onClick={onClose}>
+    <div className={`scrim ${styles.combatScrim}`} onClick={onClose}>
       <div className="modal" style={{ maxWidth: 1180 }} onClick={(e) => e.stopPropagation()}>
         <div className="modal-head">
           <div>
@@ -173,8 +174,15 @@ export default function CombatModal({ players, activeIdx, onApply, onClose }: Co
               {COMBAT_STEPS.map((s, i) => {
                 const cls = `${styles.cwStep}${i === step ? ' ' + styles.on : i < step ? ' ' + styles.done : ''}`
                 return (
-                  <li key={i} className={cls}>
-                    <button onClick={() => setStep(i)}>
+                  <li
+                    key={i}
+                    className={cls}
+                    ref={(el) => { stepItemRefs.current[i] = el }}
+                  >
+                    <button onClick={() => {
+                      setStep(i)
+                      stepItemRefs.current[i]?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' })
+                    }}>
                       <span className={styles.cwNum}>{i + 1}</span>
                       <span className={styles.cwStepname}>
                         {s.name}

@@ -38,3 +38,5 @@ export interface GlossaryGroup {
 export type DamageMap = Record<string, { total: number; cmdr: number }>
 
 export type ModalKey = 'combat' | 'anatomy' | 'glossary' | 'dice' | 'random' | 'newgame' | null
+
+export type SheetKey = null | 'tools' | { type: 'player'; id: string }
