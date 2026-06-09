@@ -204,14 +204,22 @@ export default function CombatModal({ players, activeIdx, onApply, onClose }: Co
                 <button
                   className="btn-ghost"
                   disabled={step === 0}
-                  onClick={() => setStep((s) => Math.max(0, s - 1))}
+                  onClick={() => {
+                    const i = Math.max(0, step - 1)
+                    setStep(i)
+                    stepItemRefs.current[i]?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' })
+                  }}
                 >
                   ◂ Prev
                 </button>
                 <button
                   className="btn-gold"
                   disabled={step === COMBAT_STEPS.length - 1}
-                  onClick={() => setStep((s) => Math.min(COMBAT_STEPS.length - 1, s + 1))}
+                  onClick={() => {
+                    const i = Math.min(COMBAT_STEPS.length - 1, step + 1)
+                    setStep(i)
+                    stepItemRefs.current[i]?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' })
+                  }}
                 >
                   Next ▸
                 </button>
