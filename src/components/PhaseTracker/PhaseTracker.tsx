@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { PHASES } from '../../data/phases'
 import styles from './PhaseTracker.module.css'
 
@@ -20,6 +21,11 @@ export default function PhaseTracker({
 }: PhaseTrackerProps) {
   const ph = PHASES[phaseIdx]!
   const isCombat = ph.key === 'combat'
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0 })
+  }, [phaseIdx])
 
   return (
     <>
@@ -54,7 +60,7 @@ export default function PhaseTracker({
         <span className="corner tr" />
         <span className="corner bl" />
         <span className="corner br" />
-        <div className={styles.phaseScroll}>
+        <div className={styles.phaseScroll} ref={scrollRef}>
           <div className={styles.phaseName}>
             {ph.name}
             <small>{ph.tag}</small>
