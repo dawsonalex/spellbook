@@ -69,7 +69,12 @@
   padding: clamp(18px,2vw,26px) clamp(20px,2.2vw,28px);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+}
+.phaseScroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .phaseName {
   font-family: var(--font-disp);
@@ -112,7 +117,6 @@
 }
 .phaseDetail {
   margin-top: 14px;
-  overflow-y: auto;
   font-size: clamp(14px,1.55vw,17px);
   line-height: 1.6;
   color: var(--ink);

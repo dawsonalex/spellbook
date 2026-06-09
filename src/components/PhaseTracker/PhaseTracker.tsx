@@ -54,20 +54,22 @@ export default function PhaseTracker({
         <span className="corner tr" />
         <span className="corner bl" />
         <span className="corner br" />
-        <div className={styles.phaseName}>
-          {ph.name}
-          <small>{ph.tag}</small>
-        </div>
-        <p className={styles.phaseOne}>{ph.one}</p>
+        <div className={styles.phaseScroll}>
+          <div className={styles.phaseName}>
+            {ph.name}
+            <small>{ph.tag}</small>
+          </div>
+          <p className={styles.phaseOne}>{ph.one}</p>
 
-        <div className={styles.phaseDetail}>
-          {ph.detail.map((d, i) =>
-            typeof d === 'string' ? (
-              <p key={i}>{d}</p>
-            ) : (
-              <p key={i} className={styles.tip}>{d.tip}</p>
-            ),
-          )}
+          <div className={styles.phaseDetail}>
+            {ph.detail.map((d, i) =>
+              typeof d === 'string' ? (
+                <p key={i}>{d}</p>
+              ) : (
+                <p key={i} className={styles.tip}>{d.tip}</p>
+              ),
+            )}
+          </div>
         </div>
 
         <div className={styles.phaseActions}>
