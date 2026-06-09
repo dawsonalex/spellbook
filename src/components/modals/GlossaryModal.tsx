@@ -31,7 +31,6 @@ export default function GlossaryModal({ onClose }: GlossaryModalProps) {
         placeholder="Search keywords… (e.g. trample, the stack)"
         value={q}
         onChange={(e) => setQ(e.target.value)}
-        autoFocus
       />
       {groups.length === 0 && <p className={styles.glEmpty}>No matches for "{q}".</p>}
       {groups.map((g) => (
